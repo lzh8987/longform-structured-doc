@@ -1,0 +1,42 @@
+{
+  "name": "longform-structured-doc",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "longform-structured-doc plugin for DeepSeek Harness (DSH): 大规模多章节技术/公文文档（方案/报告/标书，数十至上百页、数万至十余万字，最终交付 docx）一次性成稿流水线 skill，含 Mode A/B/C 三模式路由、素材建卡、反抄袭审计、数值回源核查、空缺标注、去AI味与 docx 组装。",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "skills",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "longform-structured-doc",
+    "long-form",
+    "document",
+    "docx",
+    "skill"
+  ],
+  "author": "longform-structured-doc",
+  "license": "MIT",
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,17 @@
+# longform-structured-doc bundle patch: one plugin row added to the web
+# profile composition. The row references the package by NAME (not a relative
+# path) so Node resolution finds the installed copy — see
+# https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/user/develop/basic/publish.md
+#
+# The plugin contributes one `ctx.skills` provider publishing the packaged
+# `skills/longform-structured-doc/` tree:
+#   - SKILL.md        方法与纪律参考（Mode A/B/C 路由、篇幅基线等）
+#   - orchestrator.md 执行入口（六个阶段 + 闸门）
+#   - templates/      五个角色 prompt
+#   - scripts/        docs_to_md.py 与 assemble_docx.py
+#
+# 纯 skill 形态：无工具、无 MCP、无需安装期配置。
+
+- insert:
+    - id: longform-structured-doc
+      name: longform-structured-doc
