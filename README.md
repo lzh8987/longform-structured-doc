@@ -54,8 +54,36 @@ longform-structured-doc/
 │   ├── templates/                  # 五个角色 prompt
 │   └── scripts/                    # docs_to_md.py / assemble_docx.py
 ├── test/check.mjs                  # 冒烟测试
+├── test/installed-copy-load.mjs    # 安装副本加载测试（复验用）
 └── package.json
 ```
+
+## 复验（Verification）
+
+拿到代码后，按以下步骤独立复验"安装链路"是否正常（零依赖，只需 Node.js ≥ 18）：
+
+```bash
+# 1. 冒烟测试：直接在源码目录验证插件入口与打包的 skill 资源树
+node test/check.mjs
+#    → 末尾输出 SMOKE TEST PASSED
+
+# 2. 真实安装进一个 profile（以 web 为例；也可用独立测试 profile）
+dsh plugin --profile web add "file:<本仓库绝对路径>"
+#    → pnpm 输出 longform-structured-doc 0.1.0 已加入 dependencies
+
+# 3. 验证 bundle 组合（patch 层应出现本插件行）
+dsh --profile web --dump-config
+#    → 输出含: # == longform-structured-doc / - id: longform-structured-doc
+
+# 4. 从安装副本（profile 的 node_modules/.pnpm 存储）真实加载，验证
+#    provider 注册、skill list/get、以及 resourceBase 下 8 个资源均可访问
+node test/installed-copy-load.mjs web      # 默认就是 web，可省略参数
+#    → 末尾输出 INSTALLED-COPY LOAD TEST PASSED
+```
+
+预期：四个步骤全部通过（exit 0）。其中第 4 步的 `resolved entry` 必须指向
+`<profile>/node_modules/...` 路径——这证明加载的是安装副本而非源码目录。
+Windows 上若 `dsh` 不在 PATH，用 `node <dsh安装>/node_modules/@deepseek-ai/dsh/lib/bin.js` 或完整路径调用。
 
 ## 更新 skill 内容
 
