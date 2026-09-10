@@ -46,6 +46,8 @@ const required = [
   'templates/chapter-writer.md',
   'scripts/docs_to_md.py',
   'scripts/assemble_docx.py',
+  'scripts/templates.json',
+  'scripts/test_roundtrip.py',
 ]
 for (const rel of required) {
   await access(base + rel)

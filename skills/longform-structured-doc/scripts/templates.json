@@ -1,0 +1,128 @@
+{
+  "numbering": {
+    "1": {
+      "name": "标准数字层级",
+      "levels": [
+        {"fmt": "decimal", "text": "%1", "suff": "space"},
+        {"fmt": "decimal", "text": "%1.%2", "suff": "space"},
+        {"fmt": "decimal", "text": "%1.%2.%3", "suff": "space"},
+        {"fmt": "decimal", "text": "%1.%2.%3.%4", "suff": "space"},
+        {"fmt": "decimal", "text": "%1.%2.%3.%4.%5", "suff": "space"},
+        {"fmt": "decimal", "text": "%1.%2.%3.%4.%5.%6", "suff": "space"}
+      ]
+    },
+    "2": {
+      "name": "标书章-节（第1章+数字，6级）",
+      "levels": [
+        {"fmt": "decimal", "text": "第%1章", "suff": "space"},
+        {"fmt": "decimal", "text": "%1.%2", "suff": "space"},
+        {"fmt": "decimal", "text": "%1.%2.%3", "suff": "space"},
+        {"fmt": "decimal", "text": "%1.%2.%3.%4", "suff": "space"},
+        {"fmt": "decimal", "text": "%1.%2.%3.%4.%5", "suff": "space"},
+        {"fmt": "decimal", "text": "%1.%2.%3.%4.%5.%6", "suff": "space"}
+      ]
+    },
+    "3": {
+      "name": "中文章·节·一、（一）1.（1）（6级）",
+      "levels": [
+        {"fmt": "chineseCounting", "text": "第%1章", "suff": "space"},
+        {"fmt": "chineseCounting", "text": "第%2节", "suff": "space"},
+        {"fmt": "chineseCounting", "text": "%3、", "suff": "space"},
+        {"fmt": "chineseCounting", "text": "（%4）", "suff": "space"},
+        {"fmt": "decimal", "text": "%5.", "suff": "space"},
+        {"fmt": "decimal", "text": "（%6）", "suff": "space"}
+      ]
+    },
+    "4": {
+      "name": "公文条·款·项·目（6级）",
+      "levels": [
+        {"fmt": "chineseCounting", "text": "第%1条", "suff": "space"},
+        {"fmt": "chineseCounting", "text": "第%2款", "suff": "space"},
+        {"fmt": "chineseCounting", "text": "第%3项", "suff": "space"},
+        {"fmt": "chineseCounting", "text": "第%4目", "suff": "space"},
+        {"fmt": "decimal", "text": "%5.", "suff": "space"},
+        {"fmt": "decimal", "text": "（%6）", "suff": "space"}
+      ]
+    },
+    "5": {
+      "name": "工程项目建设标准式（章/节/条/款/项/目·全中文，6级）",
+      "levels": [
+        {"fmt": "chineseCounting", "text": "第%1章", "suff": "space"},
+        {"fmt": "chineseCounting", "text": "第%2节", "suff": "space"},
+        {"fmt": "chineseCounting", "text": "第%3条", "suff": "space"},
+        {"fmt": "chineseCounting", "text": "第%4款", "suff": "space"},
+        {"fmt": "chineseCounting", "text": "第%5项", "suff": "space"},
+        {"fmt": "chineseCounting", "text": "第%6目", "suff": "space"}
+      ]
+    },
+    "6": {
+      "name": "党政机关公文式（一、（一）1.（1）①a.，6级）",
+      "levels": [
+        {"fmt": "chineseCounting", "text": "%1、", "suff": "space"},
+        {"fmt": "chineseCounting", "text": "（%2）", "suff": "space"},
+        {"fmt": "decimal", "text": "%3.", "suff": "space"},
+        {"fmt": "decimal", "text": "（%4）", "suff": "space"},
+        {"fmt": "decimalEnclosedCircle", "text": "%5", "suff": "space"},
+        {"fmt": "lowerLetter", "text": "%6.", "suff": "space"}
+      ]
+    }
+  },
+  "typography": {
+    "1": {
+      "name": "标书正文（宋体/黑体）",
+      "body_font": "宋体",
+      "heading_font": "黑体",
+      "ascii_font": "Times New Roman",
+      "title_size": 22,
+      "subtitle_size": 14,
+      "h_size": [16, 14, 12, 11, 10, 10],
+      "body_size": 12,
+      "line_spacing": 1.5,
+      "para_before": 0,
+      "para_after": 6,
+      "first_line_indent": 2
+    },
+    "2": {
+      "name": "学术报告（宋体/黑体·紧凑）",
+      "body_font": "宋体",
+      "heading_font": "黑体",
+      "ascii_font": "Times New Roman",
+      "title_size": 20,
+      "subtitle_size": 13,
+      "h_size": [15, 13, 12, 11, 10, 10],
+      "body_size": 11,
+      "line_spacing": 1.25,
+      "para_before": 0,
+      "para_after": 4,
+      "first_line_indent": 2
+    },
+    "3": {
+      "name": "宽松阅读（仿宋/黑体）",
+      "body_font": "仿宋_GB2312",
+      "heading_font": "黑体",
+      "ascii_font": "Times New Roman",
+      "title_size": 24,
+      "subtitle_size": 15,
+      "h_size": [18, 16, 14, 12, 11, 10],
+      "body_size": 12,
+      "line_spacing": 2.0,
+      "para_before": 6,
+      "para_after": 6,
+      "first_line_indent": 2
+    },
+    "4": {
+      "name": "技术文档（等线/微软雅黑）",
+      "body_font": "等线",
+      "heading_font": "微软雅黑",
+      "ascii_font": "Calibri",
+      "title_size": 22,
+      "subtitle_size": 14,
+      "h_size": [16, 14, 12, 11, 10, 10],
+      "body_size": 11,
+      "line_spacing": 1.5,
+      "para_before": 0,
+      "para_after": 6,
+      "first_line_indent": 0
+    }
+  }
+}

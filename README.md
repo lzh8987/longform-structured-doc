@@ -1,6 +1,6 @@
 # longform-structured-doc
 
-longform-structured-doc 的 DeepSeek Harness (DSH) 插件：把**大规模长文档生成 skill**（v2.4.2，Mode A/B/C 三模式流水线）打包成 DSH skill provider，让任意会话可直接加载使用。
+longform-structured-doc 的 DeepSeek Harness (DSH) 插件：把**大规模长文档生成 skill**（v2.6.0，Mode A/B/C 三模式流水线）打包成 DSH skill provider，让任意会话可直接加载使用。
 
 ## 它是什么
 
@@ -9,7 +9,8 @@ longform-structured-doc 的 DeepSeek Harness (DSH) 插件：把**大规模长文
 - **三模式路由**：Mode A 需求/规范驱动（目录逐条对齐招标评审条目）、Mode B 对标改写（基于现有方案、不照抄）、Mode C 调研原创（自行搜集、论断必有出处）
 - **完整流水线**（执行入口 `orchestrator.md`，六个阶段 + 闸门）：素材建卡 → 结构生成 → 分章撰写（writer → 反抄袭审计 → rewriter → 政策检查 → 终稿）→ 组装校验 → 终检
 - **硬纪律**：每章最低字数下限、重点章节加权深化、空缺符（【待补充】/【待确认】/【需核实】）不编造、数值回源核查、括号数据清洗、去AI味公文润色
-- **配套资源**：5 个角色 prompt 模板（`templates/`）+ 2 个 python 工具（`scripts/`：`docs_to_md.py` 拆源文档、`assemble_docx.py` 组装合规 docx）
+- **docx 组装自动化**：标题挂 Word 原生多级列表编号（6 级，6 套编号模板 × 4 套排版模板可选、支持内联自定义；移动/增删章节时编号与目录自动重排）、目录域打开即自动刷新并预填兜底、页脚页码域、markdown 表格转真表格
+- **配套资源**：5 个角色 prompt 模板（`templates/`）+ 4 个 python 侧文件（`scripts/`：`docs_to_md.py` 拆源文档、`assemble_docx.py` 组装合规 docx、`templates.json` 编号/排版模板定义、`test_roundtrip.py` 自测）
 
 本插件只做一件事：向 `ctx.skills` 注册 provider 发布这套 skill 树。**纯 skill 形态，无工具、无 MCP、无需配置**——模型按 orchestrator 编排调用 python 脚本执行。
 
@@ -49,10 +50,10 @@ longform-structured-doc/
 ├── lib/index.js                    # 插件入口：skill provider（零依赖）
 ├── cordis.patch.yml                # bundle 补丁（向 profile 插入本插件行）
 ├── skills/longform-structured-doc/
-│   ├── SKILL.md                    # 方法与纪律参考（v2.4.2）
+│   ├── SKILL.md                    # 方法与纪律参考（v2.6.0）
 │   ├── orchestrator.md             # 执行入口（六阶段 + 闸门）
 │   ├── templates/                  # 五个角色 prompt
-│   └── scripts/                    # docs_to_md.py / assemble_docx.py
+│   └── scripts/                    # docs_to_md.py / assemble_docx.py / templates.json / test_roundtrip.py
 ├── test/check.mjs                  # 冒烟测试
 ├── test/installed-copy-load.mjs    # 安装副本加载测试（复验用）
 └── package.json
@@ -76,7 +77,7 @@ dsh --profile web --dump-config
 #    → 输出含: # == longform-structured-doc / - id: longform-structured-doc
 
 # 4. 从安装副本（profile 的 node_modules/.pnpm 存储）真实加载，验证
-#    provider 注册、skill list/get、以及 resourceBase 下 8 个资源均可访问
+#    provider 注册、skill list/get、以及 resourceBase 下 10 个资源均可访问
 node test/installed-copy-load.mjs web      # 默认就是 web，可省略参数
 #    → 末尾输出 INSTALLED-COPY LOAD TEST PASSED
 ```
